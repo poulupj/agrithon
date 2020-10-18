@@ -1,4 +1,4 @@
-# agrithon
+# Agrithon 2020
 
 A new Flutter application.
 
