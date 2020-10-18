@@ -1,6 +1,7 @@
 class Disease {
-  String path;
-  String name;
-  String desc;
-  Disease(this.path,this.name,this.desc);
+String name;
+String path;
+String desc;
+String rem;
+Disease(this.name,this.path,this.desc,this.rem);
 }
