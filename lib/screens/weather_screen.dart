@@ -6,7 +6,7 @@ class WeatherScreen extends StatefulWidget {
 }
 
 class _WeatherScreenState extends State<WeatherScreen> {
-  int temperature=0;
+  int temperature=33;
   String location='Thrissur';
 
 
@@ -38,18 +38,26 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 ),
                 Column(
                   children: [
-                    Container(
-                      width: 300,
-                      child: TextField(
-                        style: TextStyle(color: Colors.white, fontSize: 25),
-                        decoration: InputDecoration(
-                          hintText: 'Search another location...',
-                          hintStyle:
-                          TextStyle(color: Colors.white, fontSize: 18.0),
-                          prefixIcon: Icon(Icons.search, color: Colors.white),
-                        ),
+                    Card(
+                      elevation: 3.0,
+                      color: Colors.transparent,
+                      child: ListTile(
+                        leading: Icon(Icons.wb_sunny),
+                        title: Text("Today"),
+                        subtitle: Text("Sunny"),
+                        trailing: Text("33°/28°"),
                       ),
-                    ),
+                    ) ,
+                    Card(
+                      elevation: 3.0,
+                      color: Colors.transparent,
+                      child: ListTile(
+                        leading: Icon(Icons.cloud),
+                        title: Text("Tommorow"),
+                        subtitle: Text("Cloudy"),
+                        trailing: Text("30°/23°"),
+                      ),
+                    )
                   ],
                 ),
               ],

@@ -1,3 +1,5 @@
+import 'package:agrithon/model/Disease.dart';
+import 'package:agrithon/widget/disease_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -102,7 +104,7 @@ class _searchScreenState extends State<searchScreen> {
             )
           : Container(
               color: Colors.blue,
-        child: Text("data"),
+        child: DiseaseTile(Disease(name: "1 result found",path: "AS1.jpeg",desc: "Dadsdas",rem: "sdasda"))
             ),
     ]));
   }

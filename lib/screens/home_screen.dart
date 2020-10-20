@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marquee_widget/marquee_widget.dart';
+
 class homeScreen extends StatefulWidget {
   @override
   _homeScreenState createState() => _homeScreenState();
@@ -34,10 +35,10 @@ class _homeScreenState extends State<homeScreen> {
               child: Container(
                 width: 350.0,
                 child: ListTile(
-                  title: Text("scsc"),
+                  title: Text("Thrissur"),
                   leading: Icon(Icons.wb_sunny),
                   subtitle: Text("Sunny"),
-                  trailing: Text("temp C"),
+                  trailing: Text("33 °C"),
                 ),
               ),
             ),
@@ -48,25 +49,30 @@ class _homeScreenState extends State<homeScreen> {
           Container(
             height: 200.0,
             width: 350.0,
-//            child: Marquee(
-              //direction:Axis.vertical ,
-              child:ListView.builder(
-                itemCount: feed.length,
-                  itemBuilder: (BuildContext context,int index){
-                    return Card(
-                      color: Colors.grey[200],
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0)
-                      ),
-                      //elevation: 6.0,
-                      child: ListTile(
-                        title: Center(child: Text(feed[index])),
-                      ),
-                    );
-                  }
+            child:
+//            Marquee(
+//      //        direction:Axis.vertical ,
+//              child:
+//              SizedBox(
+//                height: 180.0,width:350.0,child:
+                ListView.builder(
+                  itemCount: feed.length,
+                    itemBuilder: (BuildContext context,int index){
+                      return Card(
+                        color: Colors.grey[200],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0)
+                        ),
+                        //elevation: 6.0,
+                        child: ListTile(
+                          title: Center(child: Text(feed[index])),
+                        ),
+                      );
+                    }
 
+                ),
               ),
-            ),
+//            ),
 //          ),
         ],
       )
@@ -76,9 +82,13 @@ class _homeScreenState extends State<homeScreen> {
   List<String> getFeed() {
     int i;
     List<String> news=List<String>();
-    for(i=1;i<10;i++) {
-      news.add("News feed $i");
-    }
+    news.add("Hybrid varietyis of plants are available at Krishi Bhavan");
+    news.add("Applications to subsidies are open");
+    news.add("Pesticides will be available next week");
+    news.add("Orange alert in next week");
+//    for(i=1;i<10;i++) {
+//      news.add("News feed $i");
+//    }
     return news;
   }
 }
