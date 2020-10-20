@@ -23,15 +23,15 @@ class _BodyScreenState extends State<BodyScreen> {
 
   static List <Widget> _widgetOptions = <Widget>[
     homeScreen(),
-    weatherScreen(),
     searchScreen(),
+    weatherScreen(),
     diseaseScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("blah")),
+      appBar: AppBar(title: Text("Demeter",style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold),),),
       body: SafeArea(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
@@ -49,11 +49,11 @@ class _BodyScreenState extends State<BodyScreen> {
               title: Text('Search'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.search),
+              icon: Icon(Icons.cloud),
               title: Text('Search'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.search),
+              icon: Icon(Icons.bug_report),
               title: Text('Search'),
             ),],
           currentIndex: _selectedIndex,
