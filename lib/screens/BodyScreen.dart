@@ -24,7 +24,7 @@ class _BodyScreenState extends State<BodyScreen> {
   static List <Widget> _widgetOptions = <Widget>[
     homeScreen(),
     searchScreen(),
-    weatherScreen(),
+    WeatherScreen(),
     diseaseScreen(),
   ];
 
