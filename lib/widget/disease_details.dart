@@ -11,9 +11,7 @@ class DiseaseDetails extends StatelessWidget {
         children: [
           Center(child: Text(disease.name,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25.0),)),
           SizedBox(height: 10.0,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
+
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Image.asset('images/${disease.path}',height: 100.0,width: 100.0,),
@@ -21,20 +19,20 @@ class DiseaseDetails extends StatelessWidget {
               Container(
                 width: 150.0,
                 child: Column(
-                  //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text("Description"),
+                    Text("Description",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
                     Text(disease.desc),
-                    SizedBox(height: 5.0,),
-                    Text("Remedy"),
+                    SizedBox(height: 10.0,),
+                    Text("Remedy",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
                     Text(disease.rem)
                   ],
                 ),
               )
             ],
           )
-        ],
-      ),
+
+
     );
   }
 }

@@ -1,8 +1,19 @@
-import 'package:agrithon/model/Disease.dart';
-import 'package:agrithon/widget/disease_tile.dart';
-import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'dart:convert';
 import 'dart:io';
+import 'dart:convert';
+import 'package:agrithon/widget/loading.dart';
+import 'package:path/path.dart';
+import 'package:async/async.dart';
+import 'package:path/path.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
+import 'package:http_parser/http_parser.dart';
+import 'package:agrithon/model/Disease.dart';
+
+import 'package:agrithon/widget/disease_tile.dart';
+
+import 'package:image_picker/image_picker.dart';
+
 import 'package:agrithon/widget/disease_list.dart';
 
 class searchScreen extends StatefulWidget {
@@ -12,6 +23,45 @@ class searchScreen extends StatefulWidget {
 
 class _searchScreenState extends State<searchScreen> {
   File _image;
+  bool rstate=true;
+  Disease result;
+  String endPoint="http://192.168.43.19:5000/search";
+  uploadH() async {
+    final api = Uri.parse(endPoint);
+    // ignore: deprecated_member_use
+    http.MultipartRequest request = http.MultipartRequest('POST', api);
+
+    request.files.add(
+      await http.MultipartFile.fromPath(
+        'images',
+        _image.path,
+        contentType: MediaType('application', 'jpeg'),
+      ),
+    );
+
+    http.StreamedResponse r = await request.send();
+
+    print(r.statusCode);
+
+    var res=await r.stream.transform(utf8.decoder).join();
+    Map<String,dynamic> imap=jsonDecode(res);
+    // print(imap["results"]);
+    List rList=imap["results"];
+    //print(rList[0]);
+    print(rList[0]["image"]);
+    print(rList[0]["info"]["description"]);
+    print(rList[0]["info"]["name"]);
+    print(rList[0]["info"]["remedies"]);
+    setState(() {
+      result= Disease(name: rList[0]["info"]["name"],
+          path: rList[0]["image"],
+          desc: rList[0]["info"]["description"],
+          rem: rList[0]["info"]["remedies"]);
+          rstate=false;
+    });
+
+
+  }
   final picker = ImagePicker();
 
   bool sstate = true;
@@ -89,8 +139,14 @@ class _searchScreenState extends State<searchScreen> {
                   elevation: 6.0,
                   onPressed: () {
                     setState(() {
-                      sstate = false;
+
                       print("pressed");
+                      if(_image!=null) {
+                        uploadH();
+                        sstate = false;
+                      }else{
+                        _showAlertBox();
+                      }
                     });
                   })
             ],
@@ -99,13 +155,18 @@ class _searchScreenState extends State<searchScreen> {
       ])),
       sstate == true
           ? Container(
-              color: Colors.red,
-        child: Text("asas"),
+              //color: Colors.red,c
             )
-          : Container(
-              color: Colors.blue,
-        child: DiseaseTile(Disease(name: "1 result found",path: "AS1.jpeg",desc: "Dadsdas",rem: "sdasda"))
-            ),
+          : rstate==true?Loading():Container(
+              child: DiseaseTile(result),)
     ]));
   }
+
+  Widget _showAlertBox(){
+  return AlertDialog(
+  title: Text('AlertDialog Title'),
+  content: SingleChildScrollView(
+  child: Text("Please Enter an image",style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold),)
+  ),);
+}
 }
