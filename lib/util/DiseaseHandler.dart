@@ -6,7 +6,7 @@ class DiseaseHandler {
   void initDisease() {
     disease.add(Disease(
         name: "Bacterial spot",
-        path: "AS1.jpeg",
+        path: "AS4.jpeg",
         desc:
             "Bacterial spot is caused by four species of Xanthomonas and occurs worldwide wherever tomatoes are grown. Bacterial spot causes leaf and fruit spots, which leads to defoliation, sun-scalded fruit, and yield loss.",
         rem:
@@ -20,7 +20,7 @@ class DiseaseHandler {
             "Presently, there are no effective management strategies for measles. Wine grape growers with small vineyards will often have field crews remove infected fruit prior to harvest. Raisins affected by measles will be discarded during harvest or at the packing house, while table grape growers will leave affected fruit on the vine. Current research is focused on protecting pruning wounds from fungal infections to minimize suspect fungi from colonizing fresh wounds."));
     disease.add(Disease(
         name: "Apple scab",
-        path: "AS4.jpeg",
+        path: "AS1.jpeg",
         desc:
             "Apple scab is a common disease of plants in the rose family (Rosaceae) that is caused by the ascomycete fungus Venturia inaequalis.[1] While this disease affects several plant genera, including Sorbus, Cotoneaster, and Pyrus, it is most commonly associated with the infection of Malus trees, including species of flowering crabapple, as well as cultivated apple.",
         rem:
